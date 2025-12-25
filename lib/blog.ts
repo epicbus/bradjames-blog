@@ -24,6 +24,8 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     return [];
   }
 
+  const now = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+
   const files = fs.readdirSync(contentDirectory);
   const posts = files
     .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"))
@@ -47,6 +49,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         authorImage: data.authorImage || "/images/profile.svg",
       };
     })
+    .filter((post) => post.date <= now) // Filter out future-dated posts
     .sort((a, b) => (a.date > b.date ? -1 : 1));
 
   return posts;
@@ -70,7 +73,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = matter(fileContents);
     const stats = readingTime(content);
 
-    return {
+    const post = {
       slug,
       title: data.title || slug,
       date: data.date || new Date().toISOString().split("T")[0],
@@ -82,6 +85,14 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       author: data.author || "Brad James",
       authorImage: data.authorImage || "/images/profile.jpg",
     };
+
+    // Don't return future-dated posts
+    const now = new Date().toISOString().split("T")[0];
+    if (post.date > now) {
+      return null;
+    }
+
+    return post;
   } catch {
     return null;
   }
