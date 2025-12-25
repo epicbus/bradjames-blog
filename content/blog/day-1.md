@@ -1,6 +1,6 @@
 ---
 title: "Day 1: Where did this AI Idea Come From?"
-date: "2025-12-25"
+date: "2025-12-26"
 description: "A quick overview of why I'm doing this"
 author: "Brad James"
 authorImage: "/images/profile.svg"
