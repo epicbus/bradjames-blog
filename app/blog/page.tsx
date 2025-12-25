@@ -30,9 +30,26 @@ export default async function BlogPage() {
               <p className="text-gray-600 dark:text-gray-400 mb-3">
                 {post.description}
               </p>
-              <div className="flex gap-4 text-sm text-gray-500">
+              <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
                 <time>{post.date}</time>
+                <span>•</span>
                 <span>{post.readingTime}</span>
+                {post.tags && post.tags.length > 0 && (
+                  <>
+                    <span>•</span>
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <Link
+                          key={tag}
+                          href={`/blog/tag/${tag}`}
+                          className="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                        >
+                          #{tag}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </article>
           ))}

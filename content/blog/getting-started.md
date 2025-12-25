@@ -2,6 +2,10 @@
 title: "Getting Started: Why I'm Building an AI Marketing Team"
 date: "2025-12-25"
 description: "My first post explaining why I'm embarking on this journey to build AI agents as a non-developer."
+author: "Brad James"
+authorImage: "/images/profile.svg"
+tags: ["AI", "marketing", "automation", "getting-started"]
+pinned: true
 ---
 
 ## Welcome to My Journey

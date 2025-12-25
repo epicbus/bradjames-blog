@@ -129,6 +129,10 @@ Creates a dividing line
 title: "How I Built My First SEO Agent"
 date: "2025-12-25"
 description: "A beginner's guide to building AI agents for SEO, even without coding experience"
+author: "Brad James"
+authorImage: "/images/profile.svg"
+tags: ["AI", "SEO", "tutorial", "automation"]
+pinned: false
 ---
 
 ## Introduction
@@ -216,14 +220,67 @@ In my next post, I'll show you exactly how to set up your own SEO agent from scr
 ❌ **Don't forget blank lines** between sections
 ❌ **Don't forget to close code blocks** with three backticks
 
+## New Features: Tags, Pinned Posts & Author
+
+### Front Matter Options
+
+Your blog now supports these optional fields:
+
+```markdown
+---
+title: "Required - Your post title"
+date: "Required - YYYY-MM-DD format"
+description: "Required - Brief summary for SEO"
+author: "Optional - Defaults to 'Brad James'"
+authorImage: "Optional - Path to profile image, defaults to /images/profile.svg"
+tags: ["Optional", "array", "of", "tags"]
+pinned: false  # Optional - Set to true to feature on homepage
+---
+```
+
+### Using Tags
+
+Tags help readers find related content:
+
+```markdown
+tags: ["AI", "SEO", "tutorial"]
+```
+
+- Use lowercase for consistency
+- Keep them short (1-2 words)
+- Limit to 3-5 tags per post
+- Readers can click tags to see all posts with that tag
+
+### Pinning a Post
+
+To feature a post prominently on the homepage:
+
+```markdown
+pinned: true
+```
+
+**Important:** Only pin ONE post at a time. If multiple posts are pinned, only the first one will display.
+
+### Custom Author Info
+
+If you have guest posts or want to customize the author:
+
+```markdown
+author: "Guest Author Name"
+authorImage: "/images/guest-author.jpg"
+```
+
+Put the author's profile image in `public/images/` first.
+
 ## SEO Tips for Blog Posts
 
 1. **Title:** Make it compelling and include your main keyword
 2. **Description:** Write a clear 1-2 sentence summary (shows in Google)
-3. **First paragraph:** Include your main keyword naturally
-4. **Headings:** Use keywords in section headings
-5. **Length:** Aim for 800+ words for SEO value
-6. **Links:** Link to your other posts (internal linking)
+3. **Tags:** Use relevant tags for better categorization
+4. **First paragraph:** Include your main keyword naturally
+5. **Headings:** Use keywords in section headings
+6. **Length:** Aim for 800+ words for SEO value
+7. **Links:** Link to your other posts (internal linking)
 
 ## Testing Your Post
 

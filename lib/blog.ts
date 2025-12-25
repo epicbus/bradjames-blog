@@ -12,6 +12,10 @@ export interface BlogPost {
   description: string;
   content: string;
   readingTime: string;
+  tags?: string[];
+  pinned?: boolean;
+  author?: string;
+  authorImage?: string;
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
@@ -37,6 +41,10 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         description: data.description || "",
         content,
         readingTime: stats.text,
+        tags: data.tags || [],
+        pinned: data.pinned || false,
+        author: data.author || "Brad James",
+        authorImage: data.authorImage || "/images/profile.svg",
       };
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1));
@@ -69,6 +77,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       description: data.description || "",
       content,
       readingTime: stats.text,
+      tags: data.tags || [],
+      pinned: data.pinned || false,
+      author: data.author || "Brad James",
+      authorImage: data.authorImage || "/images/profile.jpg",
     };
   } catch {
     return null;
@@ -84,4 +96,25 @@ export async function getAllSlugs(): Promise<string[]> {
   return files
     .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx?$/, ""));
+}
+
+export async function getPinnedPost(): Promise<BlogPost | null> {
+  const posts = await getAllPosts();
+  return posts.find((post) => post.pinned) || null;
+}
+
+export async function getAllTags(): Promise<string[]> {
+  const posts = await getAllPosts();
+  const tagSet = new Set<string>();
+
+  posts.forEach((post) => {
+    post.tags?.forEach((tag) => tagSet.add(tag));
+  });
+
+  return Array.from(tagSet).sort();
+}
+
+export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.tags?.includes(tag));
 }
