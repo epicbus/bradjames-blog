@@ -100,7 +100,10 @@ export async function getAllSlugs(): Promise<string[]> {
 
 export async function getPinnedPost(): Promise<BlogPost | null> {
   const posts = await getAllPosts();
-  return posts.find((post) => post.pinned) || null;
+  const pinnedPosts = posts.filter((post) => post.pinned);
+
+  // Return the most recent pinned post (posts are already sorted by date)
+  return pinnedPosts.length > 0 ? pinnedPosts[0] : null;
 }
 
 export async function getAllTags(): Promise<string[]> {

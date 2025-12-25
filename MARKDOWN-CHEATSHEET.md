@@ -259,7 +259,7 @@ To feature a post prominently on the homepage:
 pinned: true
 ```
 
-**Important:** Only pin ONE post at a time. If multiple posts are pinned, only the first one will display.
+**Smart behavior:** If you have multiple pinned posts, the blog automatically displays the **newest one** (most recent date). This means you can pin a new post without having to go back and unpin the old one!
 
 ### Custom Author Info
 

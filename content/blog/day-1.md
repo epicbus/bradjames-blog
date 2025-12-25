@@ -2,6 +2,10 @@
 title: "Day 1: Where did this AI Idea Come From?"
 date: "2025-12-25"
 description: "A quick overview of why I'm doing this"
+author: "Brad James"
+authorImage: "/images/profile.svg"
+tags: ["journey", "freelancing", "marketing"]
+pinned: false
 ---
 
 ## How on earth did I decide as a non-developer to go all-in on building with AI?
